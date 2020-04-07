@@ -1,0 +1,26 @@
+{
+  "name": "pingoback",
+  "version": "1.0.0",
+  "description": "for authentification",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pingo-it/back-end.git"
+  },
+  "author": "zied and ala",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pingo-it/back-end/issues"
+  },
+  "homepage": "https://github.com/pingo-it/back-end#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.7",
+    "nodemon": "^2.0.2"
+  }
+}
