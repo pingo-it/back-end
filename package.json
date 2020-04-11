@@ -4,7 +4,6 @@
   "description": "for authentification",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon index.js"
   },
   "repository": {
@@ -18,9 +17,15 @@
   },
   "homepage": "https://github.com/pingo-it/back-end#readme",
   "dependencies": {
+    "@hapi/joi": "^17.1.1",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "express-session": "^1.17.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^3.5.5",
     "mongoose": "^5.9.7",
-    "nodemon": "^2.0.2"
+    "nodemon": "^2.0.3"
   }
 }
