@@ -3,6 +3,7 @@ const app = express();
 const mongoose = require("mongoose");
 const authRoute = require("./routes/auth");
 const apiRoutes =require('./routes/api');
+const blogRoutes =require('./routes/api');
 
 
 //body-parser
@@ -22,6 +23,6 @@ app.use(express.json());
 
 //import routes
 app.use("/api/user", authRoute);
-app.use("/api/blogs",apiRoutes);
+app.use("/api/blogs",blogRoutes);
 app.use("/api/events",apiRoutes);
 app.listen(3000, () => console.log("server up and runnig"));

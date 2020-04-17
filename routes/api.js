@@ -118,7 +118,7 @@ router.delete('/event/:id',isAuth,(req,res)=>{
 });
 
 //blog////////////////////////////////////////////////////////////////////////:///
-router.post("/upload", isAuth,upload.single("image"), (req, res,next) => {
+router.post("/blog", isAuth,upload.single("image"), (req, res,next) => {
    
 
     const  newBlog= new  Blog ({
@@ -126,15 +126,12 @@ router.post("/upload", isAuth,upload.single("image"), (req, res,next) => {
         description :req.body.description,
         image:req.file.path,
         date:Date.now(),
-       // publishedBy:req.body.publishedBy.map(user=>user._id)||[]
+        publishedBy:req.user
     });
     console.log(newBlog);
     newBlog.save().then(
         (rec)=>{
-            res.status(200).json({
-                message:"create blog sucessfully"
-                    
-                });
+            res.status(200).json(rec);
 
         
            
@@ -148,8 +145,8 @@ router.post("/upload", isAuth,upload.single("image"), (req, res,next) => {
 
 //get  all  blog
 
-router.get("/",(req,res)=>{
-    Blog.find().then(rec=>{
+router.get("/blog",(req,res)=>{
+    Blog.find().populate("publishedBy","name").then(rec=>{
         if(rec){
             res.status(200).json(rec);
 

@@ -20,11 +20,11 @@ const blogSchema=new mongoose.Schema({
      type :String,
      required:true,
     },
-    publishedBy:[{
+    publishedBy:{
         type:ObjectId,
         ref:"User",
     
-    }]
+    }
 });
 
 module.exports =mongoose.model("Blog",blogSchema);
