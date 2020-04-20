@@ -3,7 +3,7 @@ const dotenv = require("dotenv");
 const router = require("express").Router();
 
 dotenv.config();
-const sendMail = (order, callback) => {
+const sendMail = (user, callback) => {
   const transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
     port: 587,
@@ -16,7 +16,7 @@ const sendMail = (order, callback) => {
 
   const mailOptions = {
     from: `"ala bouziri", "alabouziri2000@gmail.com"`,
-    to: `${order.email}`,
+    to: `${user.email}`,
     subject: "Confirmation",
     html: `<h1>it's work</h1><br>,`,
   };
