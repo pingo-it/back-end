@@ -58,4 +58,38 @@ router.get("/logout", async (req, res) => {
   req.session.destroy();
 });
 
+router.get("/", (req, res) => {
+  User.find().then((rec) => {
+    if (rec) {
+      res.status(200).json(rec);
+    } else {
+      res.status(500).json({ message: "users not found" });
+    }
+  });
+});
+
+router.get("/:id", (req, res) => {
+  User.findById({ _id: req.params.id }, (err, rec) => {
+    if (rec) return res.status(200).json({ rec });
+    res.status(400).json({ message: "can not find user" });
+  });
+});
+
+router.put("/:id", (req, res) => {
+  User.findByIdAndUpdate({ _id: req.params.id }, req.body).then((rec) => {
+    if (rec) return res.status(200).json({ message: "user was updated" });
+    res.status(500).json({ error: "can not update user" });
+  });
+});
+
+router.delete("/:id", (req, res) => {
+  User.findOneAndDelete({ _id: req.params.id }, (err, rec) => {
+    if (rec) {
+      res.status(200).json({ message: "user was deleted" });
+    } else {
+      res.status(500).json({ error: "error" });
+    }
+  });
+});
+
 module.exports = router;
